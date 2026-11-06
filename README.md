@@ -1,4 +1,4 @@
-# Portfólio Técnico — Bruno Entringer
+# NEXO - Sandbox de AI 
 
 Visão geral da jornada de aprendizado e evolução em tecnologia, produto, dados e IA.  
 Este repositório reúne estudos de caso, decisões técnicas e registros de marcos, com foco em evidências claras para entrevistas e revisão profissional.
