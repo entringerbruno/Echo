@@ -159,7 +159,7 @@
 | Agent Skills | addyosmani/agent-skills@using-agent-skills | skills add | Identificar skill para tarefa Python CSV→JSON | incremental-implementation identificado | — |
 | Humanizer | v3.1.0 (blader/humanizer) | skills add | Reescrever parágrafo sintético com tells IA | 11 tells removidos (§1,§2,§3,§4,§12,§13,§16) | — |
 | find-skills | vercel-labs/skills@find-skills | skills add | `npx skills find python csv` | Resultados retornados (xlsx, markitdown, etc.) sem instalar | — |
-| Caveman compress | juliusbrussee/caveman@caveman-compress | skills add | Comprimir test-caveman.md | Código/comandos/termos preservados; linguagem comprimida | — |
+| Caveman compress | juliusbrussee/caveman@caveman-compress | skills add | Comprimir test-caveman.md | Código/comandos/termos preservados; linguagem comprimida; teste de compressão relatado — não valida skill de concisão solicitada | Novas execuções de compressão suspensas |
 
 **Integrações envolvidas:**
 - `skills` CLI (npm) — instalação e gerenciamento
@@ -170,6 +170,7 @@
 - Usar skills CLI oficial para instalação rastreável
 - Testar cada skill com tarefa mínima antes de considerar "instalada"
 - Documentar evidência concreta, não apenas instalação
+- Caveman: autorização só para concisão de respostas; compressão de arquivo testada mas não valida o uso solicitado; novas execuções suspensas
 
 **Resultado:** 4 skills instaladas e validadas; `docs/capability-inventory.md` atualizado com 4 novas entradas (total 90).
 
@@ -177,8 +178,49 @@
 - Agent Skills é meta-skill; não executa código diretamente
 - Humanizer requer aplicação manual das regras (não automatizado)
 - find-skills apenas busca; não instala resultados
-- Caveman-compress envia dados ao provedor de modelo (claude); backup out-of-tree
+- Caveman-compress: teste de compressão de arquivo sintético executado (test-caveman.md, Python 3.11.9); backup out-of-tree; dados saem da máquina; autorização só para concisão de saída — novas execuções de compressão suspensas
 
 **Próximo passo:** Lote 2 — UI UX Pro Max, emilkowalski/skills, Impeccable, design-taste-frontend (Leonxlnx).
+
+**Referência:** Commits pendentes — aguarda revisão e push.
+
+---
+
+## 2026-11-06 — Lote 2: Instalação de Skills (Esta Sessão)
+
+**Objetivo:** Instalar 4 skills do catálogo: UI UX Pro Max, emil-design-eng (emilkowalski/skills), Impeccable, design-taste-frontend.
+
+**Mudança realizada:**
+- `skills add emilkowalski/skills@emil-design-eng` → skill instalada
+- `skills add ui-ux-pro-max@ui-ux-pro-max` → skill instalada
+- `skills add impeccable@impeccable` → skill instalada (alerta "Socket" e "Critical Risk")
+- `skills add design-taste-frontend@design-taste-frontend` → skill instalada (alerta "Socket" e "Critical Risk")
+
+**Testes executados:**
+| Item | Versão/Revisão | Método/Escopo | Teste | Resultado | Pendência |
+|------|----------------|---------------|-------|-----------|-----------|
+| UI UX Pro Max | tasteskill local | skills add | Busca `--design-system` / `--domain ux` | Resultado gerado com tabela de revisão | — |
+| emil-design-eng | emilkowalski/skills | skills add | Review de CSS de botão | Orientação produzida (tabela Before/After) | — |
+| Impeccable | impeccable | skills add | Não executado | Socket alert relatado no instalador | Identificar causa do alerta |
+| design-taste-frontend | tasteskill 2.5.0 | skills add | Não executado | Critical Risk relatado no instalador | Identificar causa do alerta |
+
+**Integrações envolvidas:**
+- `skills` CLI (npm) — instalação e gerenciamento
+- GitHub (source dos repositórios de skills)
+
+**Decisão e justificativa:**
+- Usar skills CLI oficial para instalação rastreável
+- Testar skills independentes (UI UX Pro Max, emil-design-eng) com tarefas mínimas
+- Suspender teste de Impeccable e design-taste-frontend até esclarecer alertas de instalação
+- Corrigir registro do caveman-compress: concisão de respostas ≠ compressão de arquivos
+
+**Resultado:** 4 skills instaladas; 2 testadas com evidência; 2 com teste suspenso por alerta; `docs/capability-inventory.md` atualizado com 4 novas entradas (total 94).
+
+**Limitações:**
+- Impeccable e design-taste-frontend: alertas de instalador não identificados; execução não validada
+- UI UX Pro Max e emil-design-eng: busca/orientação executada; não validação visual de interface real
+- Caveman-compress: apenas concisão de saída autorizada; compressão de arquivo não testada nem autorizada
+
+**Próximo passo:** Identificar causa dos alertas "Socket" e "Critical Risk"; Lote 3 — Puppeteer, FFmpeg (se necessário), HyperFrames.
 
 **Referência:** Commits pendentes — aguarda revisão e push.

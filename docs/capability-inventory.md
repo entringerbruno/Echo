@@ -127,7 +127,7 @@ Tabela viva e rastreável. Atualizar quando o estado de uma capacidade mudar. Ev
 | using-agent-skills | Meta-skill: descobrir/invocar skills | instalada; executada | Identificação de skill para tarefa Python CSV→JSON | Skill invocada; fluxo incremental-implementation identificado | 2026-11-06 | Meta-skill; 79 agentes mapeados | Sim |
 | humanizer | Reescrever texto removendo padrões IA | instalada; executada | Reescrita de parágrafo sintético com tells de IA | Tells identificados/removidos: §1,§2,§3,§4,§12,§13,§16 | 2026-11-06 | Processo manual guiado por skill | Sim |
 | find-skills | Buscar skills sem instalar | instalada; executada | `npx skills find python csv` → resultados | Resultados retornados (xlsx, markitdown, etc.) sem instalação | 2026-11-06 | Busca apenas; não instala | Sim |
-| caveman-compress | Comprimir arquivos markdown | instalada; executada | Compressão de test-caveman.md | Código/comandos/termos preservados; linguagem natural comprimida | 2026-11-06 | Backup em diretório out-of-tree; dados saem da máquina | Sim |
+| caveman-compress | Concisão de respostas (não compressão de arquivos) | instalada; teste de compressão de arquivo sintético relatado | Comando `skills add juliusbrussee/caveman@caveman-compress` + execução de compressão em test-caveman.md | Teste de compressão de arquivo relatado; não valida skill de concisão solicitada; novas execuções de compressão suspensas | 2026-11-06 | Backup out-of-tree; dados saem da máquina; autorização só para concisão de saída | Sim |
 | superpowers:brainstorming | Exploração estruturada | mencionado em documentação | — | CLAUDE.md do projeto | 2026-11-06 | Definição local não encontrada | Sim |
 | superpowers:systematic-debugging | Diagnóstico rigoroso | mencionado em documentação | — | CLAUDE.md do projeto | 2026-11-06 | Definição local não encontrada | Sim |
 | superpowers:verification-before-completion | Evidência antes de concluir | mencionado em documentação | — | CLAUDE.md do projeto | 2026-11-06 | Definição local não encontrada | Sim |
@@ -146,8 +146,12 @@ Tabela viva e rastreável. Atualizar quando o estado de uma capacidade mudar. Ev
 | superpowers:writing-skills | Criar/editar skills | mencionado em documentação | — | CLAUDE.md do projeto | 2026-11-06 | Definição local não encontrada | Sim |
 | superpowers:loop | Recorrência | mencionado em documentação | — | CLAUDE.md do projeto | 2026-11-06 | Definição local não encontrada | Sim |
 | superpowers:fewer-permission-prompts | Reduzir prompts | mencionado em documentação | — | CLAUDE.md do projeto | 2026-11-06 | Definição local não encontrada | Sim |
+| ui-ux-pro-max | Design intelligence UI/UX (busca local) | instalada; executada | Busca `--design-system` e `--domain ux` para botão | Resultado gerado com tabela de revisão; não validação visual de interface real | 2026-11-06 | Dados locais; execução = busca, não build | Sim |
+| emil-design-eng | Design engineering philosophy | instalada; executada | Review de CSS de botão com tabela Before/After | Orientação produzida; não validação visual nem implementação | 2026-11-06 | Knowledge-based; não executa código | Sim |
+| impeccable | Frontend review/audit/polish | instalada; teste suspenso por alerta | — | Socket alert relatado no instalador; causa não identificada | 2026-11-06 | Teste suspenso até esclarecer alerta | Sim |
+| design-taste-frontend | Anti-slop frontend (tasteskill 2.5.0) | instalada; teste suspenso por alerta | — | Critical Risk relatado no instalador; causa não identificada | 2026-11-06 | Teste suspenso até esclarecer alerta | Sim |
 
-**Total de entradas de skills:** 90 (86 originais + 4 Lote 1). **Não equivale a 90 capacidades operacionais.** Diretório encontrado ≠ definição inspecionada ≠ execução ≠ validação. Execução das skills não comprovada pelas fontes consultadas.
+**Total de entradas de skills:** 94 (86 originais + 4 Lote 1 + 4 Lote 2). **Não equivale a 94 capacidades operacionais.** Diretório encontrado ≠ definição inspecionada ≠ execução ≠ validação. Execução das skills não comprovada pelas fontes consultadas.
 
 ---
 
@@ -179,5 +183,6 @@ O projeto utiliza memória operacional em arquivos Markdown para continuidade en
 ## Notas de Atualização
 
 - **2026-11-06:** Inventário inicial criado a partir de leitura autorizada de definições locais, `.mcp.json` e memória de projeto.
-- **2026-11-06:** Lote 1 concluído — 4 skills instaladas e testadas: using-agent-skills (meta-skill), humanizer (reescrita), find-skills (busca), caveman-compress (compressão). Todas executadas com evidência.
-- Próxima atualização: após verificação de `gmail.modify`, instalação de hooks, ou Lote 2.
+- **2026-11-06:** Lote 1 concluído — 4 skills instaladas e testadas: using-agent-skills (meta-skill), humanizer (reescrita), find-skills (busca), caveman-compress (concisão de respostas). Todas executadas com evidência.
+- **2026-11-06:** Lote 2 concluído — 4 skills instaladas: ui-ux-pro-max (busca executada), emil-design-eng (orientação produzida), impeccable (teste suspenso por alerta "Socket"/"Critical Risk"), design-taste-frontend (teste suspenso por alerta "Socket"/"Critical Risk").
+- Próxima atualização: após identificação de causa dos alertas, Lote 3, ou verificação de `gmail.modify`.
