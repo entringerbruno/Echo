@@ -1,0 +1,72 @@
+# .gitignore — Portfólio Técnico (padrões defensivos)
+
+# Credenciais e segredos
+.env
+.env.*
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+*.cer
+id_rsa*
+id_ed25519*
+*_rsa*
+*_ed25519*
+keyring/
+tokens/
+credentials/
+secrets/
+.gws/
+.gcloud/
+
+# Logs e arquivos temporários
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# Saídas de build e cache
+dist/
+build/
+out/
+*.pyc
+__pycache__/
+.node_modules/
+target/
+bin/
+obj/
+
+# IDE e editores
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Sistema
+*.lnk
+*.url
+
+# Dados sensíveis conhecidos
+*credential*
+*secret*
+*token*
+*password*
+*api_key*
+*apikey*
+*access_key*
+*private*
+
+# Arquivos de configuração locais que podem conter caminhos/usuários
+*.local.*
+local-*
+*.local
+
+# Backup e exportações
+*.backup
+*.export
+*.dump
