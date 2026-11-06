@@ -30,17 +30,18 @@ Foi utilizado o Google Workspace CLI (`gws`). O diagnóstico local relatou armaz
 
 ## Uso Transparente de IA
 - **Sugerido pela IA:** estrutura de comandos `gws`, padrão de validação por escopo, sugestão de separar leitura/escrita.
-- **Decisões de requisito e autorização:** definidas por mim (conforme seção “Papel e Responsabilidades”).
+- **Decisões de requisito e autorização:** definidas por mim (conforme seção "Papel e Responsabilidades").
 - **Acompanhamento:** acompanhei os retornos apresentados pelo agente e autorizei a ampliação de acesso. A execução dos comandos e as verificações técnicas foram assistidas pelo agente. Não foi realizada auditoria completa de alterações da conta.
 
 ## Resultados e Limitações
-- **Confirmado:** leitura de rótulos e mensagens funciona; escopo `modify` concedido.
-- **Pendente:** automação de triagem/limpeza (script, rótulos customizados, Task Scheduler) — ainda não implementada.
+- **Confirmado:** consulta de rótulos funciona (`gmail.users.labels.list` validado).
+- **Relatado:** aprovação de `gmail.modify` via fluxo OAuth no navegador; concessão de escopo **não inspecionada programaticamente**.
+- **Pendente:** automação de triagem/limpeza (script, rótulos customizados, agendador) — ainda não implementada.
 
 ## Itens Não Verificados e Fora do Escopo deste Estudo
-- Auditoria de segurança, isolamento de rotinas, Vault/Memória, ambiente seguro.
+- Auditoria de segurança, isolamento de rotinas, gerenciamento de estado e memória persistente, ambiente seguro.
 
 ## Lições Aprendidas
 - Menor privilégio na prática: começar só-leitura evita acidentes e simplifica conferência.
-- Separar “autenticar/consultar” de “autorizar alteração” cria checkpoints naturais de decisão.
+- Separar "autenticar/consultar" de "autorizar alteração" cria checkpoints naturais de decisão.
 - CLI com keyring do SO (conforme diagnóstico local) reduz risco de vazamento de token em repositório ou log.
