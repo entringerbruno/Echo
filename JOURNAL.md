@@ -138,3 +138,47 @@
 **Próximo passo:** Revisão humana dos 7 arquivos; autorização para commit e push.
 
 **Referência:** Pendente — aguarda commit.
+
+---
+
+## 2026-11-06 — Lote 1: Instalação e Validação de Skills (Esta Sessão)
+
+**Objetivo:** Instalar e testar 4 skills do catálogo: Agent Skills (Addy Osmani), Humanizer, find-skills (vercel-labs), Caveman (concisão).
+
+**Mudança realizada:**
+- `npm install -g skills` → CLI instalado
+- `skills add addyosmani/agent-skills@using-agent-skills` → meta-skill instalada
+- `skills add blader/humanizer@humanizer` → skill de reescrita instalada
+- `skills add vercel-labs/skills@find-skills` → skill de busca instalada
+- `skills add juliusbrussee/caveman@caveman-compress` → skill de compressão instalada
+- Cada skill testada com tarefa mínima e evidência registrada
+
+**Testes executados:**
+| Item | Versão/Revisão | Método/Escopo | Teste | Resultado | Pendência |
+|------|----------------|---------------|-------|-----------|-----------|
+| Agent Skills | addyosmani/agent-skills@using-agent-skills | skills add | Identificar skill para tarefa Python CSV→JSON | incremental-implementation identificado | — |
+| Humanizer | v3.1.0 (blader/humanizer) | skills add | Reescrever parágrafo sintético com tells IA | 11 tells removidos (§1,§2,§3,§4,§12,§13,§16) | — |
+| find-skills | vercel-labs/skills@find-skills | skills add | `npx skills find python csv` | Resultados retornados (xlsx, markitdown, etc.) sem instalar | — |
+| Caveman compress | juliusbrussee/caveman@caveman-compress | skills add | Comprimir test-caveman.md | Código/comandos/termos preservados; linguagem comprimida | — |
+
+**Integrações envolvidas:**
+- `skills` CLI (npm) — instalação e gerenciamento
+- GitHub (source dos repositórios de skills)
+- Python 3.11.9 — execução do script de compressão do Caveman
+
+**Decisão e justificativa:**
+- Usar skills CLI oficial para instalação rastreável
+- Testar cada skill com tarefa mínima antes de considerar "instalada"
+- Documentar evidência concreta, não apenas instalação
+
+**Resultado:** 4 skills instaladas e validadas; `docs/capability-inventory.md` atualizado com 4 novas entradas (total 90).
+
+**Limitações:**
+- Agent Skills é meta-skill; não executa código diretamente
+- Humanizer requer aplicação manual das regras (não automatizado)
+- find-skills apenas busca; não instala resultados
+- Caveman-compress envia dados ao provedor de modelo (claude); backup out-of-tree
+
+**Próximo passo:** Lote 2 — UI UX Pro Max, emilkowalski/skills, Impeccable, design-taste-frontend (Leonxlnx).
+
+**Referência:** Commits pendentes — aguarda revisão e push.

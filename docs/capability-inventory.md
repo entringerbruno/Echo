@@ -124,6 +124,10 @@ Tabela viva e rastreável. Atualizar quando o estado de uma capacidade mudar. Ev
 | recipe-sync-contacts-to-sheet | Contacts → Sheet | definição encontrada; instalada | — | Diretório existe | 2026-11-06 | Não executado | Sim |
 | recipe-watch-drive-changes | Watch mudanças Drive | definição encontrada; instalada | — | Diretório existe | 2026-11-06 | Não executado | Sim |
 | competitive-ads-extractor | Extrair anúncios concorrentes | definição encontrada; instalada | — | Diretório existe | 2026-11-06 | Não executado | Sim |
+| using-agent-skills | Meta-skill: descobrir/invocar skills | instalada; executada | Identificação de skill para tarefa Python CSV→JSON | Skill invocada; fluxo incremental-implementation identificado | 2026-11-06 | Meta-skill; 79 agentes mapeados | Sim |
+| humanizer | Reescrever texto removendo padrões IA | instalada; executada | Reescrita de parágrafo sintético com tells de IA | Tells identificados/removidos: §1,§2,§3,§4,§12,§13,§16 | 2026-11-06 | Processo manual guiado por skill | Sim |
+| find-skills | Buscar skills sem instalar | instalada; executada | `npx skills find python csv` → resultados | Resultados retornados (xlsx, markitdown, etc.) sem instalação | 2026-11-06 | Busca apenas; não instala | Sim |
+| caveman-compress | Comprimir arquivos markdown | instalada; executada | Compressão de test-caveman.md | Código/comandos/termos preservados; linguagem natural comprimida | 2026-11-06 | Backup em diretório out-of-tree; dados saem da máquina | Sim |
 | superpowers:brainstorming | Exploração estruturada | mencionado em documentação | — | CLAUDE.md do projeto | 2026-11-06 | Definição local não encontrada | Sim |
 | superpowers:systematic-debugging | Diagnóstico rigoroso | mencionado em documentação | — | CLAUDE.md do projeto | 2026-11-06 | Definição local não encontrada | Sim |
 | superpowers:verification-before-completion | Evidência antes de concluir | mencionado em documentação | — | CLAUDE.md do projeto | 2026-11-06 | Definição local não encontrada | Sim |
@@ -143,7 +147,7 @@ Tabela viva e rastreável. Atualizar quando o estado de uma capacidade mudar. Ev
 | superpowers:loop | Recorrência | mencionado em documentação | — | CLAUDE.md do projeto | 2026-11-06 | Definição local não encontrada | Sim |
 | superpowers:fewer-permission-prompts | Reduzir prompts | mencionado em documentação | — | CLAUDE.md do projeto | 2026-11-06 | Definição local não encontrada | Sim |
 
-**Total de entradas de skills:** 86 diretórios/menções encontradas. **Não equivale a 86 capacidades operacionais.** Diretório encontrado ≠ definição inspecionada ≠ execução ≠ validação. Execução das skills não comprovada pelas fontes consultadas.
+**Total de entradas de skills:** 90 (86 originais + 4 Lote 1). **Não equivale a 90 capacidades operacionais.** Diretório encontrado ≠ definição inspecionada ≠ execução ≠ validação. Execução das skills não comprovada pelas fontes consultadas.
 
 ---
 
@@ -175,4 +179,5 @@ O projeto utiliza memória operacional em arquivos Markdown para continuidade en
 ## Notas de Atualização
 
 - **2026-11-06:** Inventário inicial criado a partir de leitura autorizada de definições locais, `.mcp.json` e memória de projeto.
-- Próxima atualização: após verificação de `gmail.modify`, instalação de hooks, ou novas execuções comprovadas.
+- **2026-11-06:** Lote 1 concluído — 4 skills instaladas e testadas: using-agent-skills (meta-skill), humanizer (reescrita), find-skills (busca), caveman-compress (compressão). Todas executadas com evidência.
+- Próxima atualização: após verificação de `gmail.modify`, instalação de hooks, ou Lote 2.
