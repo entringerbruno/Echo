@@ -1,8 +1,8 @@
-# Estudo de Caso #2: Validação de Skills e Ferramentas — Lotes 1, 2, 3 e 4
+# Estudo de Caso #2: Validação de Skills e Ferramentas — Lotes 1, 2, 3, 4 e 5
 
-**Data:** 2026-11-11  
+**Data:** 2026-11-12  
 **Autor:** Bruno Entringer  
-**Status:** Concluído — commit b2851e9 push realizado  
+**Status:** Concluído — commit Lote 5 aguarda push  
 **Referência:** `docs/setup/skills-and-tools.md`, `docs/capability-inventory.md`, `JOURNAL.md`
 
 ---
@@ -21,8 +21,11 @@ Instalar, configurar e validar um conjunto de skills (Claude Code) e ferramentas
 | 2 | Skills | ui-ux-pro-max, emil-design-eng, impeccable, design-taste-frontend |
 | 3 | Ferramentas | Puppeteer, FFmpeg/ffprobe, HyperFrames |
 | 4 | Serviços Externos | Metricool, Higgsfield, Apify, GPT Image (OpenAI), Nano Banana |
+| 5 | Skills | caveman, spec-driven-development, test-driven-development, code-review-and-quality, review-animations, improve-animations, animation-vocabulary, find-animation-opportunities, animate |
 
-**Fora do escopo:** Conexão a contas reais, chamadas pagas, serviços cloud, configuração de MCP remoto. **Lote 4: nenhuma conta criada, nenhuma chamada paga executada.**
+**Fora do escopo:** Conexão a contas reais, chamadas pagas, serviços cloud, configuração de MCP remoto. **Lote 4: nenhuma conta criada, nenhuma chamada paga executada. Lote 5: nenhuma conta criada, nenhuma chamada paga, nenhum serviço externo.**
+
+---
 
 ---
 
@@ -104,6 +107,24 @@ Instalar, configurar e validar um conjunto de skills (Claude Code) e ferramentas
 
 ---
 
+### Lote 5 — Skills de Engenharia e Design/Animação (2026-11-12)
+
+| Skill | Instalação | Teste | Resultado | Evidência |
+|-------|------------|-------|-----------|-----------|
+| caveman | `skills add juliusbrussee/caveman@caveman` | `/caveman` invocado; explicação técnica | Resposta tersa: fatos mantidos, cerimônia removida | Saída modo caveman |
+| spec-driven-development | `skills add addyosmani/agent-skills@spec-driven-development` | Spec para feature simples (autenticação) | Spec com objetivos, escopo, capacidades | Spec documentada |
+| test-driven-development | `skills add addyosmani/agent-skills@test-driven-development` | Ciclo TDD para função pura | Testes + implementação passando (red-green-refactor) | Testes + código |
+| code-review-and-quality | `skills add addyosmani/agent-skills@code-review-and-quality` | Revisão snippet com bug intencional | Issues de qualidade identificados | Relatório de revisão |
+| review-animations | `skills add emilkowalski/skills@review-animations` | Critério qualidade em CSS animation | Feedback de revisão de motion | Feedback documentado |
+| improve-animations | `skills add emilkowalski/skills@improve-animations` | Auditoria codebase pequeno | Plano priorizado de melhorias | Auditoria + plano |
+| animation-vocabulary | `skills add emilkowalski/skills@animation-vocabulary` | Descrição "bouncy popover" | Termo exato (Pop in) | Termo identificado |
+| find-animation-opportunities | `skills add emilkowalski/skills@find-animation-opportunities` | UI estática analisada | Oportunidades listadas com valores | Lista de oportunidades |
+| animate | `skills add emilkowalski/skills@animate` | Animação entrada de card | Código com propósito, curva, duração | Código da animação |
+
+**Pendência Lote 5:** code-review-and-quality — Med Risk no instalador (Socket/Snyk) registrado; causa não identificada. Skill instalada e testada.
+
+---
+
 ## Resultados Consolidados
 
 | Item | Tipo | Estado Final | Evidência Principal | Pendência |
@@ -124,6 +145,15 @@ Instalar, configurar e validar um conjunto de skills (Claude Code) e ferramentas
 | Apify | Serviço | planejado | Docs oficiais referenciadas | Conta + API token necessários |
 | GPT Image (OpenAI) | Serviço | planejado | Docs oficiais referenciadas | Conta OpenAI verificada necessária |
 | Nano Banana | Serviço | planejado | Docs oficiais referenciadas | Conta Google AI necessária |
+| caveman | Skill | validado | Saída modo tersa | — |
+| spec-driven-development | Skill | validado | Spec documentada | — |
+| test-driven-development | Skill | validado | Testes + implementação | — |
+| code-review-and-quality | Skill | validado | Relatório de revisão | Med Risk instalador |
+| review-animations | Skill | validado | Feedback motion | — |
+| improve-animations | Skill | validado | Auditoria + plano | Read-only |
+| animation-vocabulary | Skill | validado | Termo identificado | Naming apenas |
+| find-animation-opportunities | Skill | validado | Lista oportunidades | Read-only |
+| animate | Skill | validado | Código animação | — |
 
 
 ---
@@ -139,23 +169,25 @@ Instalar, configurar e validar um conjunto de skills (Claude Code) e ferramentas
 7. **Alertas de instalador distintos:** Impeccable reportou "Socket", design-taste-frontend reportou "Critical Risk" — alertas com rótulos diferentes; causas não identificadas.
 8. **Inventário de serviços ≠ integração:** Lote 4 documenta apenas requisitos (conta, auth, custo, docs). Não conectar contas nem fazer chamadas pagas sem aprovação explícita.
 9. **Evidência granular por tipo:** Puppeteer = `page.title()` + `screenshot.png`; FFmpeg/HyperFrames = arquivos MP4 inspecionados com ffprobe. Não generalizar "teste passou".
+10. **Skills isoladas vs pacotes:** caveman (concisão) ≠ caveman-compress (compressão); instalar skill isolada evita efeitos colaterais. Addy Osmani: 18 skills no repo, apenas 3 de engenharia instaladas. Emil Kowalski: 12 skills, 5 complementares a emil-design-eng instaladas.
 
 ---
 
-## Próximos Passos (Lote 5+)
+## Próximos Passos (Lote 6+)
 
 1. Para serviços do Lote 4: executar testes futuros específicos definidos na tabela do Lote 4 (ex.: Metricool GET /me, Higgsfield POST /generate 5s, Apify GET /acts, GPT Image POST /images/generations, Nano Banana POST /models/generateContent — todos a verificar na documentação oficial).
 2. Avaliar necessidade de MCP servers para serviços recorrentes.
 3. Configurar variáveis de ambiente seguras para API keys (não commitar).
 4. **Não** conectar contas, criar contas ou fazer chamadas pagas sem aprovação explícita.
+5. Lote 5: 9 skills de engenharia/design instaladas e validadas — definir testes futuros específicos por skill se necessário.
 
 ---
 
 ## Arquivos Atualizados/Criados
 
-- `docs/capability-inventory.md` — entradas de Puppeteer, FFmpeg/ffprobe, HyperFrames nas Integrações; hyperframes nas Skills; **5 serviços do Lote 4 nas Integrações**; notas de atualização corrigidas (Caveman, Alertas separados, evidência granular Lote 3, total integrações removido)
-- `JOURNAL.md` — entrada "2026-11-11 — Lote 3: Instalação e Validação de Ferramentas" + **entrada Lote 4**
-- `docs/setup/skills-and-tools.md` — **criado** — registro tabular completo de todos os lotes (1–4)
+- `docs/capability-inventory.md` — entradas de Puppeteer, FFmpeg/ffprobe, HyperFrames nas Integrações; hyperframes nas Skills; **5 serviços do Lote 4 nas Integrações**; **9 skills do Lote 5 nas Skills**; notas de atualização corrigidas (Caveman, Alertas separados, evidência granular Lote 3, total integrações removido, Lote 5)
+- `JOURNAL.md` — entrada "2026-11-11 — Lote 3: Instalação e Validação de Ferramentas" + **entrada Lote 4** + **entrada Lote 5**
+- `docs/setup/skills-and-tools.md` — **criado** — registro tabular completo de todos os lotes (1–5)
 - `case-studies/02-skills-and-tools-validation.md` — **criado** — este documento
 
 ---
@@ -171,4 +203,4 @@ Instalar, configurar e validar um conjunto de skills (Claude Code) e ferramentas
 
 ## Referência de Commit
 
-Commit `b2851e9` — `docs: Lote 3 — Puppeteer, FFmpeg/ffprobe, HyperFrames validados...` (push realizado `a26fe09..b2851e9` → origin/master). Próximo commit incluirá correções do Lote 4.
+Commit `b2851e9` — `docs: Lote 3 — Puppeteer, FFmpeg/ffprobe, HyperFrames validados...` (push realizado `a26fe09..b2851e9` → origin/master). Próximo commit incluirá Lote 4 e Lote 5.

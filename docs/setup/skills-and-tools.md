@@ -54,6 +54,22 @@ Cada entrada segue o formato:
 
 ---
 
+### Lote 5 — 2026-11-12
+
+| Nome | Versão/Source | Comando de Instalação | Data | Teste de Validação | Resultado | Evidência | Status | Observações |
+|------|---------------|----------------------|------|-------------------|-----------|-----------|--------|-------------|
+| caveman | juliusbrussee/caveman | `skills add juliusbrussee/caveman@caveman` | 2026-11-12 | Invocar `/caveman` e pedir explicação técnica | Resposta tersa: fatos mantidos, cerimônia removida | Saída modo caveman | validado | Concisão de respostas (voz); distinto de caveman-compress |
+| spec-driven-development | addyosmani/agent-skills | `skills add addyosmani/agent-skills@spec-driven-development` | 2026-11-12 | Pedir spec para feature simples (ex.: autenticação) | Spec gerada com objetivos, escopo, capacidades | Spec documentada | validado | Engenharia: specs; sem hooks ativados |
+| test-driven-development | addyosmani/agent-skills | `skills add addyosmani/agent-skills@test-driven-development` | 2026-11-12 | Pedir TDD para função pura (ex.: soma) | Ciclo red-green-refactor demonstrado | Testes + implementação | validado | Engenharia: testes; red-green-refactor |
+| code-review-and-quality | addyosmani/agent-skills | `skills add addyosmani/agent-skills@code-review-and-quality` | 2026-11-12 | Revisar snippet com bug intencional | Issues de qualidade identificados (Med Risk no instalador) | Relatório de revisão | validado | Engenharia: review; Med Risk Socket/Snyk |
+| review-animations | emilkowalski/skills | `skills add emilkowalski/skills@review-animations` | 2026-11-12 | Pedir review de CSS animation/transition | Critério de qualidade de motion aplicado | Feedback de revisão | validado | Complementa emil-design-eng; animações |
+| improve-animations | emilkowalski/skills | `skills add emilkowalski/skills@improve-animations` | 2026-11-12 | Auditar codebase pequeno com motion | Plano priorizado de melhorias de animação | Auditoria + plano | validado | Complementa emil-design-eng; read-only |
+| animation-vocabulary | emilkowalski/skills | `skills add emilkowalski/skills@animation-vocabulary` | 2026-11-12 | Descrever efeito "bouncy popover" | Termo exato retornado (ex.: Pop in) | Termo identificado | validado | Complementa emil-design-eng; naming |
+| find-animation-opportunities | emilkowalski/skills | `skills add emilkowalski/skills@find-animation-opportunities` | 2026-11-12 | Apontar UI estática sem motion | Oportunidades de animação listadas com valores | Lista de oportunidades | validado | Complementa emil-design-eng; read-only |
+| animate | emilkowalski/skills | `skills add emilkowalski/skills@animate` | 2026-11-12 | Pedir animação de entrada de card | Implementação com propósito, curva, duração | Código da animação | validado | Complementa emil-design-eng; build |
+
+---
+
 ## Ferramentas CLI / Bibliotecas
 
 ### Lote 3 — 2026-11-11
@@ -90,6 +106,7 @@ Cada entrada segue o formato:
 | 2 | 2026-11-06 | 4 | 0 | 0 | 2 | 2 | 0 |
 | 3 | 2026-11-11 | 1 | 3 | 0 | 4 | 0 | 0 |
 | 4 | 2026-11-11 | 0 | 0 | 5 | 0 | 0 | 0 |
+| 5 | 2026-11-12 | 9 | 0 | 0 | 9 | 0 | 0 |
 
 ---
 
@@ -99,3 +116,4 @@ Cada entrada segue o formato:
 - Avaliar necessidade de MCP servers para serviços recorrentes
 - Configurar variáveis de ambiente seguras para API keys (não commitar)
 - **Não** conectar contas, criar contas ou fazer chamadas pagas sem aprovação explícita
+- Lote 5: 9 skills de engenharia/design instaladas e validadas (caveman, 3 Addy Osmani, 5 Emil Kowalski)

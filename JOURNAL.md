@@ -319,3 +319,56 @@
 **Próximo passo:** Lote 5+ — definir testes futuros específicos por serviço; avaliar MCP servers; configurar variáveis de ambiente seguras.
 
 **Referência:** Commit `b2851e9` (Lote 3); próximo commit incluirá Lote 4.
+
+---
+
+## 2026-11-12 — Lote 5: Instalação e Validação de Skills de Engenharia/Design (Esta Sessão)
+
+**Objetivo:** Instalar e testar 9 skills: caveman (concisão de respostas), 3 skills de engenharia Addy Osmani, 5 skills Emil Kowalski complementares a emil-design-eng.
+
+**Mudança realizada:**
+- `skills add juliusbrussee/caveman@caveman` → skill de voz tersa instalada
+- `skills add addyosmani/agent-skills@spec-driven-development` → specs antes de codar
+- `skills add addyosmani/agent-skills@test-driven-development` → TDD red-green-refactor
+- `skills add addyosmani/agent-skills@code-review-and-quality` → multi-axis code review
+- `skills add emilkowalski/skills@review-animations` → review de animações
+- `skills add emilkowalski/skills@improve-animations` → auditoria/plano melhorias motion
+- `skills add emilkowalski/skills@animation-vocabulary` → naming de efeitos
+- `skills add emilkowalski/skills@find-animation-opportunities` → detectar oportunidades motion
+- `skills add emilkowalski/skills@animate` → build animação do zero
+
+**Testes executados:**
+| Item | Versão/Source | Método/Escopo | Teste | Resultado | Pendência |
+|------|---------------|---------------|-------|-----------|-----------|
+| caveman | juliusbrussee/caveman | skills add | `/caveman` invocado; explicação técnica | Resposta tersa: fatos mantidos, cerimônia removida | — |
+| spec-driven-development | addyosmani/agent-skills | skills add | Spec para feature simples (autenticação) | Spec com objetivos, escopo, capacidades | — |
+| test-driven-development | addyosmani/agent-skills | skills add | Ciclo TDD para função pura | Testes + implementação passando | — |
+| code-review-and-quality | addyosmani/agent-skills | skills add | Revisão snippet com bug intencional | Issues de qualidade identificados | — |
+| review-animations | emilkowalski/skills | skills add | Critério qualidade em CSS animation | Feedback de revisão de motion | — |
+| improve-animations | emilkowalski/skills | skills add | Auditoria codebase pequeno | Plano priorizado de melhorias | — |
+| animation-vocabulary | emilkowalski/skills | skills add | Descrição "bouncy popover" | Termo exato (Pop in) | — |
+| find-animation-opportunities | emilkowalski/skills | skills add | UI estática analisada | Oportunidades listadas com valores | — |
+| animate | emilkowalski/skills | skills add | Animação entrada de card | Código com propósito, curva, duração | — |
+
+**Integrações envolvidas:**
+- `skills` CLI (npm) — instalação e gerenciamento
+- GitHub (source dos repositórios: juliusbrussee/caveman, addyosmani/agent-skills, emilkowalski/skills)
+
+**Decisão e justificativa:**
+- caveman: skill isolada de concisão de respostas (voz), distinta de caveman-compress (compressão de arquivos)
+- Addy Osmani: apenas 3 skills de engenharia (specs, testes, review) das 18 disponíveis; sem hooks ativados
+- Emil Kowalski: 5 skills que complementam emil-design-eng já instalada (todas voltadas a animação/motion)
+- Teste mínimo por item executado com evidência registrada
+- code-review-and-quality: Med Risk no instalador (Socket/Snyk) registrado mas skill instalada e testada
+
+**Resultado:** 9 skills instaladas e validadas; `docs/capability-inventory.md` e `docs/setup/skills-and-tools.md` atualizados com Lote 5.
+
+**Limitações:**
+- caveman: voz tersa, não gramática quebrada; persistência de modo até "stop caveman"
+- Addy Osmani skills: Med Risk no instalador do code-review-and-quality (causa não identificada)
+- Emil Kowalski skills: read-only (improve-animations, find-animation-opportunities) ou naming apenas (animation-vocabulary)
+- Nenhuma conta criada, nenhuma chamada paga, nenhum serviço externo
+
+**Próximo passo:** Lote 6+ — definir testes futuros por skill; avaliar MCP servers; configurar variáveis de ambiente seguras.
+
+**Referência:** Commit pendente — aguarda revisão e push.
