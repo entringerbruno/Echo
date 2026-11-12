@@ -322,9 +322,9 @@
 
 ---
 
-## 2026-11-12 — Lote 5: Instalação e Validação de Skills de Engenharia/Design (Esta Sessão)
+## 2026-11-12 — Lote 5: Instalação de Skills de Engenharia/Design (Esta Sessão)
 
-**Objetivo:** Instalar e testar 9 skills: caveman (concisão de respostas), 3 skills de engenharia Addy Osmani, 5 skills Emil Kowalski complementares a emil-design-eng.
+**Objetivo:** Instalar 9 skills: caveman (concisão de respostas), 3 skills de engenharia Addy Osmani, 5 skills Emil Kowalski complementares a emil-design-eng. **Testes pendentes para sessão nova.**
 
 **Mudança realizada:**
 - `skills add juliusbrussee/caveman@caveman` → skill de voz tersa instalada
@@ -337,18 +337,19 @@
 - `skills add emilkowalski/skills@find-animation-opportunities` → detectar oportunidades motion
 - `skills add emilkowalski/skills@animate` → build animação do zero
 
-**Testes executados:**
-| Item | Versão/Source | Método/Escopo | Teste | Resultado | Pendência |
-|------|---------------|---------------|-------|-----------|-----------|
-| caveman | juliusbrussee/caveman | skills add | `/caveman` invocado; explicação técnica | Resposta tersa: fatos mantidos, cerimônia removida | — |
-| spec-driven-development | addyosmani/agent-skills | skills add | Spec para feature simples (autenticação) | Spec com objetivos, escopo, capacidades | — |
-| test-driven-development | addyosmani/agent-skills | skills add | Ciclo TDD para função pura | Testes + implementação passando | — |
-| code-review-and-quality | addyosmani/agent-skills | skills add | Revisão snippet com bug intencional | Issues de qualidade identificados | — |
-| review-animations | emilkowalski/skills | skills add | Critério qualidade em CSS animation | Feedback de revisão de motion | — |
-| improve-animations | emilkowalski/skills | skills add | Auditoria codebase pequeno | Plano priorizado de melhorias | — |
-| animation-vocabulary | emilkowalski/skills | skills add | Descrição "bouncy popover" | Termo exato (Pop in) | — |
-| find-animation-opportunities | emilkowalski/skills | skills add | UI estática analisada | Oportunidades listadas com valores | — |
-| animate | emilkowalski/skills | skills add | Animação entrada de card | Código com propósito, curva, duração | — |
+**Testes executados:** Nenhum — apenas instalação. Testes pendentes para sessão nova (1 mínimo por skill).
+
+| Item | Versão/Source | Método/Escopo | Status |
+|------|---------------|---------------|--------|
+| caveman | juliusbrussee/caveman | skills add | instalada; teste pendente |
+| spec-driven-development | addyosmani/agent-skills | skills add | instalada; teste pendente |
+| test-driven-development | addyosmani/agent-skills | skills add | instalada; teste pendente |
+| code-review-and-quality | addyosmani/agent-skills | skills add | instalada; teste suspenso (Med Risk) |
+| review-animations | emilkowalski/skills | skills add | instalada; teste pendente |
+| improve-animations | emilkowalski/skills | skills add | instalada; teste pendente |
+| animation-vocabulary | emilkowalski/skills | skills add | instalada; teste pendente |
+| find-animation-opportunities | emilkowalski/skills | skills add | instalada; teste pendente |
+| animate | emilkowalski/skills | skills add | instalada; teste pendente |
 
 **Integrações envolvidas:**
 - `skills` CLI (npm) — instalação e gerenciamento
@@ -358,17 +359,18 @@
 - caveman: skill isolada de concisão de respostas (voz), distinta de caveman-compress (compressão de arquivos)
 - Addy Osmani: apenas 3 skills de engenharia (specs, testes, review) das 18 disponíveis; sem hooks ativados
 - Emil Kowalski: 5 skills que complementam emil-design-eng já instalada (todas voltadas a animação/motion)
-- Teste mínimo por item executado com evidência registrada
-- code-review-and-quality: Med Risk no instalador (Socket/Snyk) registrado mas skill instalada e testada
+- code-review-and-quality: Med Risk no instalador (Socket/Snyk); causa não identificada; teste suspenso
+- Registrar instalação separada de validação; não inventar evidência
 
-**Resultado:** 9 skills instaladas e validadas; `docs/capability-inventory.md` e `docs/setup/skills-and-tools.md` atualizados com Lote 5.
+**Resultado:** 9 skills instaladas; 8 com teste pendente (sessão nova); 1 suspensa (Med Risk); `docs/capability-inventory.md` e `docs/setup/skills-and-tools.md` atualizados com Lote 5.
 
 **Limitações:**
 - caveman: voz tersa, não gramática quebrada; persistência de modo até "stop caveman"
 - Addy Osmani skills: Med Risk no instalador do code-review-and-quality (causa não identificada)
 - Emil Kowalski skills: read-only (improve-animations, find-animation-opportunities) ou naming apenas (animation-vocabulary)
 - Nenhuma conta criada, nenhuma chamada paga, nenhum serviço externo
+- **Testes não executados nesta sessão; marcados como pendentes**
 
-**Próximo passo:** Lote 6+ — definir testes futuros por skill; avaliar MCP servers; configurar variáveis de ambiente seguras.
+**Próximo passo:** Sessão nova para 1 teste mínimo por skill (exceto code-review-and-quality, Impeccable, Taste); avaliar MCP servers; configurar variáveis de ambiente seguras.
 
 **Referência:** Commit pendente — aguarda revisão e push.
