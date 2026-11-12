@@ -143,7 +143,7 @@
 
 ## 2026-11-06 — Lote 1: Instalação e Validação de Skills (Esta Sessão)
 
-**Objetivo:** Instalar e testar 4 skills do catálogo: Agent Skills (Addy Osmani), Humanizer, find-skills (vercel-labs), Caveman (concisão).
+**Objetivo:** Instalar e testar 4 skills do catálogo: Agent Skills (Addy Osmani), Humanizer, find-skills (vercel-labs), Caveman (compressão de arquivos Markdown).
 
 **Mudança realizada:**
 - `npm install -g skills` → CLI instalado
@@ -159,7 +159,7 @@
 | Agent Skills | addyosmani/agent-skills@using-agent-skills | skills add | Identificar skill para tarefa Python CSV→JSON | incremental-implementation identificado | — |
 | Humanizer | v3.1.0 (blader/humanizer) | skills add | Reescrever parágrafo sintético com tells IA | 11 tells removidos (§1,§2,§3,§4,§12,§13,§16) | — |
 | find-skills | vercel-labs/skills@find-skills | skills add | `npx skills find python csv` | Resultados retornados (xlsx, markitdown, etc.) sem instalar | — |
-| Caveman compress | juliusbrussee/caveman@caveman-compress | skills add | Comprimir test-caveman.md | Código/comandos/termos preservados; linguagem comprimida; teste de compressão relatado — não valida skill de concisão solicitada | Novas execuções de compressão suspensas |
+| Caveman compress | juliusbrussee/caveman@caveman-compress | skills add | Comprimir test-caveman.md | Compressão relatada; arquivo de entrada não confirmado; não valida skill de concisão solicitada | Novas execuções de compressão suspensas |
 
 **Integrações envolvidas:**
 - `skills` CLI (npm) — instalação e gerenciamento
@@ -170,9 +170,9 @@
 - Usar skills CLI oficial para instalação rastreável
 - Testar cada skill com tarefa mínima antes de considerar "instalada"
 - Documentar evidência concreta, não apenas instalação
-- Caveman: autorização só para concisão de respostas; compressão de arquivo testada mas não valida o uso solicitado; novas execuções suspensas
+- Caveman: finalidade compressão de arquivos Markdown; instalada; teste de compressão relatado; arquivo de entrada não confirmado; não valida skill de concisão solicitada; novas execuções suspensas
 
-**Resultado:** 4 skills instaladas e validadas; `docs/capability-inventory.md` atualizado com 4 novas entradas (total 90).
+**Resultado:** 4 skills instaladas; 3 validadas para objetivo solicitado; `docs/capability-inventory.md` atualizado com 4 novas entradas (total 90).
 
 **Limitações:**
 - Agent Skills é meta-skill; não executa código diretamente
@@ -193,8 +193,8 @@
 **Mudança realizada:**
 - `skills add emilkowalski/skills@emil-design-eng` → skill instalada
 - `skills add ui-ux-pro-max@ui-ux-pro-max` → skill instalada
-- `skills add impeccable@impeccable` → skill instalada (alerta "Socket" e "Critical Risk")
-- `skills add design-taste-frontend@design-taste-frontend` → skill instalada (alerta "Socket" e "Critical Risk")
+- `skills add impeccable@impeccable` → skill instalada (alerta "Socket")
+- `skills add design-taste-frontend@design-taste-frontend` → skill instalada (alerta "Critical Risk")
 
 **Testes executados:**
 | Item | Versão/Revisão | Método/Escopo | Teste | Resultado | Pendência |
@@ -211,8 +211,8 @@
 **Decisão e justificativa:**
 - Usar skills CLI oficial para instalação rastreável
 - Testar skills independentes (UI UX Pro Max, emil-design-eng) com tarefas mínimas
-- Suspender teste de Impeccable e design-taste-frontend até esclarecer alertas de instalação
-- Corrigir registro do caveman-compress: concisão de respostas ≠ compressão de arquivos
+- Suspender teste de Impeccable e design-taste-frontend até esclarecer alertas de instalação (alertas com rótulos diferentes; causas não identificadas)
+- Corrigir registro do caveman-compress: finalidade compressão de arquivos Markdown; não valida concisão de respostas
 
 **Resultado:** 4 skills instaladas; 2 testadas com evidência; 2 com teste suspenso por alerta; `docs/capability-inventory.md` atualizado com 4 novas entradas (total 94).
 
@@ -255,7 +255,7 @@
 - Puppeteer: projeto isolado para evitar contaminação; execução sem desativar sandbox
 - FFmpeg: winget Gyan full build para codecs completos; validação via ffprobe obrigatória
 - HyperFrames: composição própria (não testsrc do FFmpeg) para validar a ferramenta real; GSAP para animação de texto e movimento
-- Todas as validações com ffprobe para evidência objetiva
+- Evidência: Puppeteer: título e screenshot. FFmpeg e HyperFrames: arquivos finais inspecionados com ffprobe.
 
 **Resultado:** 3 ferramentas instaladas e validadas; `docs/capability-inventory.md` atualizado com entradas de Puppeteer, FFmpeg/ffprobe, HyperFrames.
 
@@ -282,7 +282,7 @@
   - **Higgsfield** — AI video generation (image→video, text→video); Bearer Token; pay-per-generation; docs: docs.higgsfield.ai, open.higgsfield.ai/pricing
   - **Apify** — Web scraping & automation (Actors); API Token; pay-per-actor-run; free tier limitado; docs: docs.apify.com/api/v2, help.apify.com
   - **GPT Image (OpenAI)** — Image generation/editing (gpt-image-1); API Key OpenAI; custo por imagem; org verificada; docs: developers.openai.com/api/docs/models/gpt-image-1, pricing
-  - **Nano Banana** — AI image generation (Gemini Nano Banana 2.1); API Key Google AI; custo por geração; região US; docs: nanobanana.im/api, docs.nananobanana.com, ai.google.dev
+  - **Nano Banana** — AI image generation (Gemini); API Key Google AI; custo por geração; docs: ai.google.dev/gemini-api/docs
 - Atualização de `docs/capability-inventory.md`: 5 entradas na tabela Integrações com estado "não verificado"
 - Atualização de `docs/setup/skills-and-tools.md`: tabela Lote 4 com 5 serviços
 - Atualização de `case-studies/02-skills-and-tools-validation.md`: seção Lote 4, resultados consolidados, lições aprendidas
@@ -290,13 +290,13 @@
 
 **Testes executados:** Nenhum — apenas inventário documental.
 
-| Serviço | Tipo | Autenticação | Custo | Docs | Status |
-|---------|------|--------------|-------|------|--------|
-| Metricool | SaaS API | API Key | Plano pago; free tier limitado | app.metricool.com/resources/apidocs | planejado |
-| Higgsfield | SaaS API | Bearer Token | Pay-per-generation | docs.higgsfield.ai | planejado |
-| Apify | SaaS Platform | API Token | Pay-per-actor-run | docs.apify.com/api/v2 | planejado |
-| GPT Image | SaaS API | API Key (OpenAI) | Custo por imagem | developers.openai.com/api/docs/models/gpt-image-1 | planejado |
-| Nano Banana | SaaS API | API Key (Google AI) | Custo por geração | nanobanana.im/api | planejado |
+| Serviço | Tipo | Autenticação | Custo | Docs | Status | Teste Futuro Mínimo | Ação Humana Necessária |
+|---------|------|--------------|-------|------|--------|---------------------|------------------------|
+| Metricool | SaaS API | API Key | Plano pago; free tier limitado | app.metricool.com/resources/apidocs | planejado | GET /me (valida auth) | Criar conta; gerar API key |
+| Higgsfield | SaaS API | Bearer Token | Pay-per-generation | docs.higgsfield.ai | planejado | POST /generate (5s, parâmetros mínimos) | Criar conta; org verificada se exigida |
+| Apify | SaaS Platform | API Token | Pay-per-actor-run | docs.apify.com/api/v2 | planejado | GET /acts (lista Actors) | Criar conta; gerar API token |
+| GPT Image | SaaS API | API Key (OpenAI) | Custo por imagem | developers.openai.com/api/docs/models/gpt-image-1 | planejado | POST /images/generations (1 imagem, prompt mínimo) | Conta OpenAI; org verificada |
+| Nano Banana | SaaS API | API Key (Google AI) | Custo por geração | ai.google.dev/gemini-api/docs | planejado | POST /models/generateContent (1 imagem, prompt mínimo) | Conta Google AI; habilitar Gemini API |
 
 **Integrações envolvidas:**
 - Web (pesquisa de documentação oficial)

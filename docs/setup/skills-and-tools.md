@@ -31,7 +31,7 @@ Cada entrada segue o formato:
 | using-agent-skills | addyosmani/agent-skills | `skills add addyosmani/agent-skills@using-agent-skills` | 2026-11-06 | Identificar skill para tarefa Python CSV→JSON | `incremental-implementation` identificado | Skill invocada | validado | Meta-skill; 79 agentes mapeados |
 | humanizer | blader/humanizer v3.1.0 | `skills add blader/humanizer@humanizer` | 2026-11-06 | Reescrever parágrafo sintético com tells de IA | 11 tells removidos (§1,§2,§3,§4,§12,§13,§16) | Texto reescrito | validado | Processo manual guiado por skill |
 | find-skills | vercel-labs/skills | `skills add vercel-labs/skills@find-skills` | 2026-11-06 | `npx skills find python csv` | Resultados retornados (xlsx, markitdown, etc.) sem instalar | Lista de skills | validado | Busca apenas; não instala |
-| caveman-compress | juliusbrussee/caveman | `skills add juliusbrussee/caveman@caveman-compress` | 2026-11-06 | Comprimir test-caveman.md (Python) | Compressão relatada; não valida concisão de saída | test-caveman.md comprimido | suspenso | Autorização só para concisão de respostas; execuções de compressão suspensas |
+| caveman-compress | juliusbrussee/caveman | `skills add juliusbrussee/caveman@caveman-compress` | 2026-11-06 | Comprimir test-caveman.md (Python) | Compressão relatada; arquivo de entrada não confirmado; não valida concisão de saída | test-caveman.md processado | suspenso | Autorização só para concisão de respostas; execuções de compressão suspensas |
 
 ---
 
@@ -70,13 +70,13 @@ Cada entrada segue o formato:
 
 ### Lote 4 — 2026-11-11
 
-| Nome | Tipo | Finalidade | Autenticação | Custo Estimado | Documentação Oficial | Status | Observações |
-|------|------|------------|--------------|----------------|----------------------|--------|-------------|
-| Metricool | SaaS API | Social media analytics & scheduling | API Key | Plano pago para endpoints completos; free tier limitado | https://app.metricool.com/resources/apidocs/index.html, https://help.metricool.com/ | planejado | Requer conta; rate limits por plano |
-| Higgsfield | SaaS API | AI video generation (image→video, text→video) | Bearer Token (API Key) | Pay-per-generation; pricing em open.higgsfield.ai/pricing | https://docs.higgsfield.ai/, https://open.higgsfield.ai/pricing | planejado | Requer conta; organização verificada para alguns endpoints |
-| Apify | SaaS Platform | Web scraping & automation (Actors) | API Token | Pay-per-actor-run; free tier limitado | https://docs.apify.com/api/v2, https://help.apify.com/ | planejado | Requer conta; Actor runs cobrados por compute units |
-| GPT Image (OpenAI) | SaaS API | Image generation/editing (gpt-image-1) | API Key (OpenAI) | Custo por imagem (varia por resolução/qualidade) | https://developers.openai.com/api/docs/models/gpt-image-1, https://developers.openai.com/api/docs/pricing | planejado | Requer conta OpenAI; organização verificada; rate limits |
-| Nano Banana | SaaS API | AI image generation (Gemini Nano Banana 2.1) | API Key (Google AI) | Custo por geração; pricing em ai.google.dev | https://nanobanana.im/api/, https://docs.nananobanana.com/, https://ai.google.dev/ | planejado | Requer conta Google AI; região US; free tier disponível |
+| Nome | Tipo | Finalidade | Autenticação | Custo Estimado | Documentação Oficial | Status | Teste Futuro Mínimo | Ação Humana Necessária | Observações |
+|------|------|------------|--------------|----------------|----------------------|--------|---------------------|------------------------|-------------|
+| Metricool | SaaS API | Social media analytics & scheduling | API Key | Plano pago para endpoints completos; free tier limitado | https://app.metricool.com/resources/apidocs/index.html, https://help.metricool.com/ | planejado | GET /me (valida auth) | Criar conta; gerar API key | Rate limits por plano; não publicar em redes como teste |
+| Higgsfield | SaaS API | AI video generation (image→video, text→video) | Bearer Token (API Key) | Pay-per-generation; pricing em open.higgsfield.ai/pricing | https://docs.higgsfield.ai/, https://open.higgsfield.ai/pricing | planejado | POST /generate (5s, parâmetros mínimos) | Criar conta; organização verificada se exigido | Custo por geração; sem gratuidade garantida |
+| Apify | SaaS Platform | Web scraping & automation (Actors) | API Token | Pay-per-actor-run; free tier limitado | https://docs.apify.com/api/v2, https://help.apify.com/ | planejado | GET /acts (lista Actors) | Criar conta; gerar API token | Cobrança por compute units; free tier limitado |
+| GPT Image (OpenAI) | SaaS API | Image generation/editing (gpt-image-1) | API Key (OpenAI) | Custo por imagem (varia por resolução/qualidade) | https://developers.openai.com/api/docs/models/gpt-image-1, https://developers.openai.com/api/docs/pricing | planejado | POST /images/generations (1 imagem, prompt mínimo) | Conta OpenAI; organização verificada | Custo por imagem; rate limits |
+| Nano Banana | SaaS API | AI image generation (Gemini) | API Key (Google AI) | Custo por geração; pricing em ai.google.dev | https://ai.google.dev/gemini-api/docs | planejado | POST /models/generateContent (1 imagem, prompt mínimo) | Conta Google AI; habilitar Gemini API | Custo por geração; sem gratuidade garantida |
 
 **Nota:** Nenhuma conta foi criada, nenhuma chamada paga foi executada. Apenas inventário documental.
 
@@ -90,7 +90,6 @@ Cada entrada segue o formato:
 | 2 | 2026-11-06 | 4 | 0 | 0 | 2 | 2 | 0 |
 | 3 | 2026-11-11 | 1 | 3 | 0 | 4 | 0 | 0 |
 | 4 | 2026-11-11 | 0 | 0 | 5 | 0 | 0 | 0 |
-| **Total** | — | **9** | **3** | **5** | **9** | **3** | **0** |
 
 ---
 

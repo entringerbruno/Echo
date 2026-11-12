@@ -47,7 +47,7 @@ Instalar, configurar e validar um conjunto de skills (Claude Code) e ferramentas
 | find-skills | `skills add vercel-labs/skills@find-skills` | `npx skills find python csv` | Resultados retornados sem instalar | Lista: xlsx, markitdown, etc. |
 | caveman-compress | `skills add juliusbrussee/caveman@caveman-compress` | Comprimir test-caveman.md (Python) | Compressão relatada; **não valida concisão de saída** | test-caveman.md processado |
 
-**Pendência Lote 1:** Caveman-compress — autorização apenas para concisão de respostas; execuções de compressão de arquivo suspensas.
+**Pendência Lote 1:** Caveman-compress — finalidade: compressão de arquivos Markdown; instalada; teste de compressão relatado; arquivo de entrada não confirmado; não valida skill de concisão solicitada; novas execuções suspensas.
 
 ---
 
@@ -86,18 +86,19 @@ Instalar, configurar e validar um conjunto de skills (Claude Code) e ferramentas
 - **Validação:** `ffprobe` → 1920×1080@30, 3,0s
 - **Evidência:** Arquivo MP4 (129.5 KB) + saída ffprobe CSV
 - **Nota:** Composição **própria** (não `testsrc` do FFmpeg) — valida HyperFrames real
+- **Evidência:** Puppeteer: título e screenshot. FFmpeg e HyperFrames: arquivos finais inspecionados com ffprobe.
 
 ---
 
 ### Lote 4 — Inventário de Serviços Externos (2026-11-11)
 
-| Serviço | Tipo | Finalidade | Autenticação | Custo | Documentação | Status |
-|---------|------|------------|--------------|-------|--------------|--------|
-| Metricool | SaaS API | Social media analytics & scheduling | API Key | Plano pago p/ endpoints completos; free tier limitado | app.metricool.com/resources/apidocs, help.metricool.com | planejado |
-| Higgsfield | SaaS API | AI video generation (image→video, text→video) | Bearer Token | Pay-per-generation | docs.higgsfield.ai, open.higgsfield.ai/pricing | planejado |
-| Apify | SaaS Platform | Web scraping & automation (Actors) | API Token | Pay-per-actor-run; free tier limitado | docs.apify.com/api/v2, help.apify.com | planejado |
-| GPT Image (OpenAI) | SaaS API | Image generation/editing (gpt-image-1) | API Key (OpenAI) | Custo por imagem (resolução/qualidade) | developers.openai.com/api/docs/models/gpt-image-1, pricing | planejado |
-| Nano Banana | SaaS API | AI image generation (Gemini Nano Banana 2.1) | API Key (Google AI) | Custo por geração | nanobanana.im/api, docs.nananobanana.com, ai.google.dev | planejado |
+| Serviço | Tipo | Finalidade | Autenticação | Custo | Documentação | Status | Teste Futuro Mínimo | Ação Humana Necessária |
+|---------|------|------------|--------------|-------|--------------|--------|---------------------|------------------------|
+| Metricool | SaaS API | Social media analytics & scheduling | API Key | Plano pago p/ endpoints completos; free tier limitado | app.metricool.com/resources/apidocs, help.metricool.com | planejado | GET /me (valida auth) | Criar conta; gerar API key |
+| Higgsfield | SaaS API | AI video generation (image→video, text→video) | Bearer Token | Pay-per-generation | docs.higgsfield.ai, open.higgsfield.ai/pricing | planejado | POST /generate (5s, parâmetros mínimos) | Criar conta; org verificada se exigida |
+| Apify | SaaS Platform | Web scraping & automation (Actors) | API Token | Pay-per-actor-run; free tier limitado | docs.apify.com/api/v2, help.apify.com | planejado | GET /acts (lista Actors) | Criar conta; gerar API token |
+| GPT Image (OpenAI) | SaaS API | Image generation/editing (gpt-image-1) | API Key (OpenAI) | Custo por imagem (resolução/qualidade) | developers.openai.com/api/docs/models/gpt-image-1, pricing | planejado | POST /images/generations (1 imagem, prompt mínimo) | Conta OpenAI; org verificada |
+| Nano Banana | SaaS API | AI image generation (Gemini) | API Key (Google AI) | Custo por geração | ai.google.dev/gemini-api/docs | planejado | POST /models/generateContent (1 imagem, prompt mínimo) | Conta Google AI; habilitar Gemini API |
 
 **Nenhuma conta criada, nenhuma chamada paga executada.** Apenas inventário documental com referências oficiais.
 
@@ -124,7 +125,6 @@ Instalar, configurar e validar um conjunto de skills (Claude Code) e ferramentas
 | GPT Image (OpenAI) | Serviço | planejado | Docs oficiais referenciadas | Conta OpenAI verificada necessária |
 | Nano Banana | Serviço | planejado | Docs oficiais referenciadas | Conta Google AI necessária |
 
-**Total:** 16 itens — 9 validados, 3 suspensos (1 Lote 1 + 2 Lote 2), 5 planejados (Lote 4), 0 falharam.
 
 ---
 
@@ -136,7 +136,7 @@ Instalar, configurar e validar um conjunto de skills (Claude Code) e ferramentas
 4. **PATH no Windows/winget:** Após `winget install`, o shell atual não vê o novo PATH. Precisa `export PATH=...` ou reiniciar shell.
 5. **HyperFrames ≠ FFmpeg:** O `testsrc` do FFmpeg valida FFmpeg, não HyperFrames. Composição HTML/GSAP própria é necessária para validar a ferramenta real.
 6. **Caveman-compress:** Teste de compressão de arquivo (Python) executado, mas não valida a skill de concisão de respostas. Autorização explícita apenas para concisão de saída.
-7. **Alertas de instalador distintos:** Impeccable reportou "Socket", design-taste-frontend reportou "Critical Risk" — causas diferentes, não agrupar como mesmo alerta.
+7. **Alertas de instalador distintos:** Impeccable reportou "Socket", design-taste-frontend reportou "Critical Risk" — alertas com rótulos diferentes; causas não identificadas.
 8. **Inventário de serviços ≠ integração:** Lote 4 documenta apenas requisitos (conta, auth, custo, docs). Não conectar contas nem fazer chamadas pagas sem aprovação explícita.
 9. **Evidência granular por tipo:** Puppeteer = `page.title()` + `screenshot.png`; FFmpeg/HyperFrames = arquivos MP4 inspecionados com ffprobe. Não generalizar "teste passou".
 
@@ -144,7 +144,7 @@ Instalar, configurar e validar um conjunto de skills (Claude Code) e ferramentas
 
 ## Próximos Passos (Lote 5+)
 
-1. Para serviços do Lote 4: definir testes futuros específicos (ex.: "teste de agendamento Metricool com API key", "geração de vídeo Higgsfield 5s", "Actor run Apify simples").
+1. Para serviços do Lote 4: executar testes futuros específicos definidos na tabela do Lote 4 (ex.: Metricool GET /me, Higgsfield POST /generate 5s, Apify GET /acts, GPT Image POST /images/generations, Nano Banana POST /models/generateContent).
 2. Avaliar necessidade de MCP servers para serviços recorrentes.
 3. Configurar variáveis de ambiente seguras para API keys (não commitar).
 4. **Não** conectar contas, criar contas ou fazer chamadas pagas sem aprovação explícita.
