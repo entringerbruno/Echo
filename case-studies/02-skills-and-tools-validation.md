@@ -1,8 +1,8 @@
-# Estudo de Caso #2: Validação de Skills e Ferramentas — Lotes 1, 2 e 3
+# Estudo de Caso #2: Validação de Skills e Ferramentas — Lotes 1, 2, 3 e 4
 
 **Data:** 2026-11-11  
 **Autor:** Bruno Entringer  
-**Status:** Concluído — aguarda commit e push  
+**Status:** Concluído — commit b2851e9 push realizado  
 **Referência:** `docs/setup/skills-and-tools.md`, `docs/capability-inventory.md`, `JOURNAL.md`
 
 ---
@@ -20,8 +20,9 @@ Instalar, configurar e validar um conjunto de skills (Claude Code) e ferramentas
 | 1 | Skills | using-agent-skills, humanizer, find-skills, caveman-compress |
 | 2 | Skills | ui-ux-pro-max, emil-design-eng, impeccable, design-taste-frontend |
 | 3 | Ferramentas | Puppeteer, FFmpeg/ffprobe, HyperFrames |
+| 4 | Serviços Externos | Metricool, Higgsfield, Apify, GPT Image (OpenAI), Nano Banana |
 
-**Fora do escopo:** Conexão a contas reais, chamadas pagas, serviços cloud, configuração de MCP remoto.
+**Fora do escopo:** Conexão a contas reais, chamadas pagas, serviços cloud, configuração de MCP remoto. **Lote 4: nenhuma conta criada, nenhuma chamada paga executada.**
 
 ---
 
@@ -88,6 +89,20 @@ Instalar, configurar e validar um conjunto de skills (Claude Code) e ferramentas
 
 ---
 
+### Lote 4 — Inventário de Serviços Externos (2026-11-11)
+
+| Serviço | Tipo | Finalidade | Autenticação | Custo | Documentação | Status |
+|---------|------|------------|--------------|-------|--------------|--------|
+| Metricool | SaaS API | Social media analytics & scheduling | API Key | Plano pago p/ endpoints completos; free tier limitado | app.metricool.com/resources/apidocs, help.metricool.com | planejado |
+| Higgsfield | SaaS API | AI video generation (image→video, text→video) | Bearer Token | Pay-per-generation | docs.higgsfield.ai, open.higgsfield.ai/pricing | planejado |
+| Apify | SaaS Platform | Web scraping & automation (Actors) | API Token | Pay-per-actor-run; free tier limitado | docs.apify.com/api/v2, help.apify.com | planejado |
+| GPT Image (OpenAI) | SaaS API | Image generation/editing (gpt-image-1) | API Key (OpenAI) | Custo por imagem (resolução/qualidade) | developers.openai.com/api/docs/models/gpt-image-1, pricing | planejado |
+| Nano Banana | SaaS API | AI image generation (Gemini Nano Banana 2.1) | API Key (Google AI) | Custo por geração | nanobanana.im/api, docs.nananobanana.com, ai.google.dev | planejado |
+
+**Nenhuma conta criada, nenhuma chamada paga executada.** Apenas inventário documental com referências oficiais.
+
+---
+
 ## Resultados Consolidados
 
 | Item | Tipo | Estado Final | Evidência Principal | Pendência |
@@ -100,11 +115,16 @@ Instalar, configurar e validar um conjunto de skills (Claude Code) e ferramentas
 | emil-design-eng | Skill | validado | Tabela Before/After | — |
 | impeccable | Skill | **suspenso** | Socket alert | Causa não identificada |
 | design-taste-frontend | Skill | **suspenso** | Critical Risk | Causa não identificada |
-| Puppeteer | Ferramenta | validado | screenshot.png | — |
+| Puppeteer | Ferramenta | validado | screenshot.png + page.title() | — |
 | FFmpeg/ffprobe | Ferramenta | validado | synthetic-2s.mp4 + ffprobe | PATH update necessário |
 | HyperFrames | Ferramenta | validado | hyperframes-3s.mp4 + ffprobe | Requer FFmpeg + Chrome |
+| Metricool | Serviço | planejado | Docs oficiais referenciadas | Conta + API key necessárias |
+| Higgsfield | Serviço | planejado | Docs oficiais referenciadas | Conta + Bearer token necessários |
+| Apify | Serviço | planejado | Docs oficiais referenciadas | Conta + API token necessários |
+| GPT Image (OpenAI) | Serviço | planejado | Docs oficiais referenciadas | Conta OpenAI verificada necessária |
+| Nano Banana | Serviço | planejado | Docs oficiais referenciadas | Conta Google AI necessária |
 
-**Total:** 11 itens — 9 validados, 3 suspensos (1 Lote 1 + 2 Lote 2), 0 falharam.
+**Total:** 16 itens — 9 validados, 3 suspensos (1 Lote 1 + 2 Lote 2), 5 planejados (Lote 4), 0 falharam.
 
 ---
 
@@ -115,23 +135,27 @@ Instalar, configurar e validar um conjunto de skills (Claude Code) e ferramentas
 3. **Isolamento funciona:** Diretórios `/tmp/...` evitam poluição do workspace e facilitam limpeza.
 4. **PATH no Windows/winget:** Após `winget install`, o shell atual não vê o novo PATH. Precisa `export PATH=...` ou reiniciar shell.
 5. **HyperFrames ≠ FFmpeg:** O `testsrc` do FFmpeg valida FFmpeg, não HyperFrames. Composição HTML/GSAP própria é necessária para validar a ferramenta real.
+6. **Caveman-compress:** Teste de compressão de arquivo (Python) executado, mas não valida a skill de concisão de respostas. Autorização explícita apenas para concisão de saída.
+7. **Alertas de instalador distintos:** Impeccable reportou "Socket", design-taste-frontend reportou "Critical Risk" — causas diferentes, não agrupar como mesmo alerta.
+8. **Inventário de serviços ≠ integração:** Lote 4 documenta apenas requisitos (conta, auth, custo, docs). Não conectar contas nem fazer chamadas pagas sem aprovação explícita.
+9. **Evidência granular por tipo:** Puppeteer = `page.title()` + `screenshot.png`; FFmpeg/HyperFrames = arquivos MP4 inspecionados com ffprobe. Não generalizar "teste passou".
 
 ---
 
-## Próximos Passos (Lote 4)
+## Próximos Passos (Lote 5+)
 
-1. Inventariar serviços externos (APIs, SaaS, cloud) que o projeto pode usar.
-2. Para cada serviço: requisitos de conta, métodos de autenticação, custos estimados.
-3. Definir testes futuros (sem executar) — ex.: "teste de escrita Gmail com `gmail.modify`", "deploy Lovable em preview".
-4. **Não** conectar contas, criar contas, ou fazer chamadas pagas no Lote 4.
+1. Para serviços do Lote 4: definir testes futuros específicos (ex.: "teste de agendamento Metricool com API key", "geração de vídeo Higgsfield 5s", "Actor run Apify simples").
+2. Avaliar necessidade de MCP servers para serviços recorrentes.
+3. Configurar variáveis de ambiente seguras para API keys (não commitar).
+4. **Não** conectar contas, criar contas ou fazer chamadas pagas sem aprovação explícita.
 
 ---
 
 ## Arquivos Atualizados/Criados
 
-- `docs/capability-inventory.md` — entradas de Puppeteer, FFmpeg/ffprobe, HyperFrames nas Integrações; hyperframes nas Skills; notas de atualização
-- `JOURNAL.md` — entrada "2026-11-11 — Lote 3: Instalação e Validação de Ferramentas"
-- `docs/setup/skills-and-tools.md` — **criado** — registro tabular completo de todos os lotes
+- `docs/capability-inventory.md` — entradas de Puppeteer, FFmpeg/ffprobe, HyperFrames nas Integrações; hyperframes nas Skills; **5 serviços do Lote 4 nas Integrações**; notas de atualização corrigidas (Caveman, Alertas separados, evidência granular Lote 3, total integrações removido)
+- `JOURNAL.md` — entrada "2026-11-11 — Lote 3: Instalação e Validação de Ferramentas" + **entrada Lote 4**
+- `docs/setup/skills-and-tools.md` — **criado** — registro tabular completo de todos os lotes (1–4)
 - `case-studies/02-skills-and-tools-validation.md` — **criado** — este documento
 
 ---
@@ -147,4 +171,4 @@ Instalar, configurar e validar um conjunto de skills (Claude Code) e ferramentas
 
 ## Referência de Commit
 
-Pendente — aguarda `git add` explícito dos 4 arquivos, commit e push via `gh`.
+Commit `b2851e9` — `docs: Lote 3 — Puppeteer, FFmpeg/ffprobe, HyperFrames validados...` (push realizado `a26fe09..b2851e9` → origin/master). Próximo commit incluirá correções do Lote 4.

@@ -257,7 +257,7 @@
 - HyperFrames: composição própria (não testsrc do FFmpeg) para validar a ferramenta real; GSAP para animação de texto e movimento
 - Todas as validações com ffprobe para evidência objetiva
 
-**Resultado:** 3 ferramentas instaladas e validadas; `docs/capability-inventory.md` atualizado com entradas de Puppeteer, FFmpeg/ffprobe, HyperFrames (total de integrações: 7).
+**Resultado:** 3 ferramentas instaladas e validadas; `docs/capability-inventory.md` atualizado com entradas de Puppeteer, FFmpeg/ffprobe, HyperFrames.
 
 **Limitações:**
 - Puppeteer: requer Chromium; execução headless
@@ -269,3 +269,53 @@
 **Próximo passo:** Lote 4 — inventário de serviços externos, requisitos de conta, autenticação, possível custo e teste futuro.
 
 **Referência:** Commits pendentes — aguarda revisão e push.
+
+---
+
+## 2026-11-11 — Lote 4: Inventário de Serviços Externos (Esta Sessão)
+
+**Objetivo:** Inventariar 5 serviços externos (APIs, SaaS, cloud) com requisitos de conta, métodos de autenticação, custos estimados e documentação oficial. **Não criar contas, não executar chamadas pagas.**
+
+**Mudança realizada:**
+- Pesquisa e documentação de 5 serviços:
+  - **Metricool** — Social media analytics & scheduling; API Key; plano pago para endpoints completos; docs: app.metricool.com/resources/apidocs, help.metricool.com
+  - **Higgsfield** — AI video generation (image→video, text→video); Bearer Token; pay-per-generation; docs: docs.higgsfield.ai, open.higgsfield.ai/pricing
+  - **Apify** — Web scraping & automation (Actors); API Token; pay-per-actor-run; free tier limitado; docs: docs.apify.com/api/v2, help.apify.com
+  - **GPT Image (OpenAI)** — Image generation/editing (gpt-image-1); API Key OpenAI; custo por imagem; org verificada; docs: developers.openai.com/api/docs/models/gpt-image-1, pricing
+  - **Nano Banana** — AI image generation (Gemini Nano Banana 2.1); API Key Google AI; custo por geração; região US; docs: nanobanana.im/api, docs.nananobanana.com, ai.google.dev
+- Atualização de `docs/capability-inventory.md`: 5 entradas na tabela Integrações com estado "não verificado"
+- Atualização de `docs/setup/skills-and-tools.md`: tabela Lote 4 com 5 serviços
+- Atualização de `case-studies/02-skills-and-tools-validation.md`: seção Lote 4, resultados consolidados, lições aprendidas
+- Correções de resíduos nos documentos (Caveman, Alertas separados, evidência granular Lote 3, total integrações removido)
+
+**Testes executados:** Nenhum — apenas inventário documental.
+
+| Serviço | Tipo | Autenticação | Custo | Docs | Status |
+|---------|------|--------------|-------|------|--------|
+| Metricool | SaaS API | API Key | Plano pago; free tier limitado | app.metricool.com/resources/apidocs | planejado |
+| Higgsfield | SaaS API | Bearer Token | Pay-per-generation | docs.higgsfield.ai | planejado |
+| Apify | SaaS Platform | API Token | Pay-per-actor-run | docs.apify.com/api/v2 | planejado |
+| GPT Image | SaaS API | API Key (OpenAI) | Custo por imagem | developers.openai.com/api/docs/models/gpt-image-1 | planejado |
+| Nano Banana | SaaS API | API Key (Google AI) | Custo por geração | nanobanana.im/api | planejado |
+
+**Integrações envolvidas:**
+- Web (pesquisa de documentação oficial)
+- Sistema de arquivos local (atualização de docs)
+
+**Decisão e justificativa:**
+- Separar inventário (documentação de requisitos) de integração (conexão real)
+- Registrar apenas informações públicas oficiais; não assumir acesso
+- Estado "não verificado" / "planejado" reflete ausência de teste real
+- Não misturar serviços externos com ferramentas CLI locais
+
+**Resultado:** 5 serviços inventariados; 4 arquivos atualizados com correções de resíduos dos lotes anteriores.
+
+**Limitações:**
+- Nenhuma conta criada, nenhuma chamada paga executada
+- Custos baseados em documentação pública; podem variar
+- Autenticação documentada mas não testada
+- Rate limits e quotas não validados
+
+**Próximo passo:** Lote 5+ — definir testes futuros específicos por serviço; avaliar MCP servers; configurar variáveis de ambiente seguras.
+
+**Referência:** Commit `b2851e9` (Lote 3); próximo commit incluirá Lote 4.

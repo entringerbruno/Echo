@@ -66,22 +66,37 @@ Cada entrada segue o formato:
 
 ---
 
-## Resumo por Lote
+## Serviços Externos (Lote 4)
 
-| Lote | Data | Skills Instaladas | Ferramentas Instaladas | Validadas | Suspensas | Falharam |
-|------|------|-------------------|------------------------|-----------|-----------|----------|
-| 1 | 2026-11-06 | 4 | 0 | 3 | 1 | 0 |
-| 2 | 2026-11-06 | 4 | 0 | 2 | 2 | 0 |
-| 3 | 2026-11-11 | 1 | 3 | 4 | 0 | 0 |
-| **Total** | — | **9** | **3** | **9** | **3** | **0** |
+### Lote 4 — 2026-11-11
+
+| Nome | Tipo | Finalidade | Autenticação | Custo Estimado | Documentação Oficial | Status | Observações |
+|------|------|------------|--------------|----------------|----------------------|--------|-------------|
+| Metricool | SaaS API | Social media analytics & scheduling | API Key | Plano pago para endpoints completos; free tier limitado | https://app.metricool.com/resources/apidocs/index.html, https://help.metricool.com/ | planejado | Requer conta; rate limits por plano |
+| Higgsfield | SaaS API | AI video generation (image→video, text→video) | Bearer Token (API Key) | Pay-per-generation; pricing em open.higgsfield.ai/pricing | https://docs.higgsfield.ai/, https://open.higgsfield.ai/pricing | planejado | Requer conta; organização verificada para alguns endpoints |
+| Apify | SaaS Platform | Web scraping & automation (Actors) | API Token | Pay-per-actor-run; free tier limitado | https://docs.apify.com/api/v2, https://help.apify.com/ | planejado | Requer conta; Actor runs cobrados por compute units |
+| GPT Image (OpenAI) | SaaS API | Image generation/editing (gpt-image-1) | API Key (OpenAI) | Custo por imagem (varia por resolução/qualidade) | https://developers.openai.com/api/docs/models/gpt-image-1, https://developers.openai.com/api/docs/pricing | planejado | Requer conta OpenAI; organização verificada; rate limits |
+| Nano Banana | SaaS API | AI image generation (Gemini Nano Banana 2.1) | API Key (Google AI) | Custo por geração; pricing em ai.google.dev | https://nanobanana.im/api/, https://docs.nananobanana.com/, https://ai.google.dev/ | planejado | Requer conta Google AI; região US; free tier disponível |
+
+**Nota:** Nenhuma conta foi criada, nenhuma chamada paga foi executada. Apenas inventário documental.
 
 ---
 
-## Próximos Passos (Lote 4)
+## Resumo por Lote
 
-- Inventário de serviços externos (APIs, SaaS, cloud)
-- Requisitos de conta por serviço
-- Métodos de autenticação (OAuth, API key, service account)
-- Possíveis custos (free tier, pay-per-use, assinatura)
-- Testes futuros planejados (sem execução imediata)
-- **Não** conectar contas, criar contas ou fazer chamadas pagas neste lote
+| Lote | Data | Skills Instaladas | Ferramentas Instaladas | Serviços Inventariados | Validadas | Suspensas | Falharam |
+|------|------|-------------------|------------------------|------------------------|-----------|-----------|----------|
+| 1 | 2026-11-06 | 4 | 0 | 0 | 3 | 1 | 0 |
+| 2 | 2026-11-06 | 4 | 0 | 0 | 2 | 2 | 0 |
+| 3 | 2026-11-11 | 1 | 3 | 0 | 4 | 0 | 0 |
+| 4 | 2026-11-11 | 0 | 0 | 5 | 0 | 0 | 0 |
+| **Total** | — | **9** | **3** | **5** | **9** | **3** | **0** |
+
+---
+
+## Próximos Passos (Lote 5+)
+
+- Para serviços do Lote 4: definir testes futuros específicos (ex.: "teste de agendamento Metricool com API key", "geração de vídeo Higgsfield 5s")
+- Avaliar necessidade de MCP servers para serviços recorrentes
+- Configurar variáveis de ambiente seguras para API keys (não commitar)
+- **Não** conectar contas, criar contas ou fazer chamadas pagas sem aprovação explícita
