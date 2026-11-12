@@ -150,8 +150,9 @@ Tabela viva e rastreável. Atualizar quando o estado de uma capacidade mudar. Ev
 | emil-design-eng | Design engineering philosophy | instalada; executada | Review de CSS de botão com tabela Before/After | Orientação produzida; não validação visual nem implementação | 2026-11-06 | Knowledge-based; não executa código | Sim |
 | impeccable | Frontend review/audit/polish | instalada; teste suspenso por alerta | — | Socket alert relatado no instalador; causa não identificada | 2026-11-06 | Teste suspenso até esclarecer alerta | Sim |
 | design-taste-frontend | Anti-slop frontend (tasteskill 2.5.0) | instalada; teste suspenso por alerta | — | Critical Risk relatado no instalador; causa não identificada | 2026-11-06 | Teste suspenso até esclarecer alerta | Sim |
+| hyperframes | HTML→vídeo (GSAP + FFmpeg) | instalada; executada; validada | `hyperframes init` + composição HTML 3s + `hyperframes render` | `hyperframes-3s.mp4` 1920×1080@30, 3,0s; ffprobe validado | 2026-11-11 | Requer FFmpeg no PATH; render local usa Chrome headless | Sim |
 
-**Total de entradas de skills:** 94 (86 originais + 4 Lote 1 + 4 Lote 2). **Não equivale a 94 capacidades operacionais.** Diretório encontrado ≠ definição inspecionada ≠ execução ≠ validação. Execução das skills não comprovada pelas fontes consultadas.
+**Total de entradas de skills:** 95 (86 originais + 4 Lote 1 + 4 Lote 2 + 1 Lote 3). **Não equivale a 95 capacidades operacionais.** Diretório encontrado ≠ definição inspecionada ≠ execução ≠ validação. Execução das skills não comprovada pelas fontes consultadas.
 
 ---
 
@@ -162,6 +163,10 @@ Tabela viva e rastreável. Atualizar quando o estado de uma capacidade mudar. Ev
 | gh CLI | CLI + API | GitHub ops, auth, credential helper | autenticado; executado; push HTTPS funcionou | `git push origin master` | commit b30257f; `gh auth status` | 2026-11-06 | Token no keyring; helper via `gh auth setup-git` | Sim |
 | gws CLI | CLI + OAuth | Google Workspace (Gmail) | autenticado; executado; consulta de rótulos documentada | `gws gmail users labels list` | Estudo de caso 01 | 2026-11-06 | `gmail.modify` não verificado; outros serviços não testados | Sim |
 | git | CLI | Versionamento | executado; push funcionou | commit + push | Histórico Git | 2026-11-06 | Dependente de gh credential helper | Sim |
+| skills CLI | npm CLI | Instalação/gerenciamento de skills | instalado; executado | `skills add ...` ×8 | 8 skills instaladas | 2026-11-06 | Requer npm; fonte GitHub | Sim |
+| Puppeteer | Biblioteca Node | Browser automation headless | instalado; executado; validado | Projeto isolado `/tmp/puppeteer-test`; HTML sintético + screenshot | `screenshot.png` fullPage; sem `--no-sandbox` | 2026-11-11 | Requer Chromium; `headless: true` | Sim |
+| FFmpeg/ffprobe | CLI | Encoding/probing de vídeo/áudio | instalado; executado; validado | `winget install Gyan.FFmpeg`; clipe sintético 2s + validação ffprobe | `synthetic-2s.mp4` 640×480@30, 2,0s (v+a) | 2026-11-11 | Build Gyan 9.0.2 full; PATH precisa ser atualizado | Sim |
+| HyperFrames | CLI + lib | HTML/GSAP → MP4 | instalado; executado; validado | `hyperframes init` + composição 3s + render | `hyperframes-3s.mp4` 1920×1080@30, 3,0s; ffprobe validado | 2026-11-11 | Requer FFmpeg no PATH; Chrome headless; GPU auto | Sim |
 
 ---
 
@@ -185,4 +190,5 @@ O projeto utiliza memória operacional em arquivos Markdown para continuidade en
 - **2026-11-06:** Inventário inicial criado a partir de leitura autorizada de definições locais, `.mcp.json` e memória de projeto.
 - **2026-11-06:** Lote 1 concluído — 4 skills instaladas e testadas: using-agent-skills (meta-skill), humanizer (reescrita), find-skills (busca), caveman-compress (concisão de respostas). Todas executadas com evidência.
 - **2026-11-06:** Lote 2 concluído — 4 skills instaladas: ui-ux-pro-max (busca executada), emil-design-eng (orientação produzida), impeccable (teste suspenso por alerta "Socket"/"Critical Risk"), design-taste-frontend (teste suspenso por alerta "Socket"/"Critical Risk").
-- Próxima atualização: após identificação de causa dos alertas, Lote 3, ou verificação de `gmail.modify`.
+- **2026-11-11:** Lote 3 concluído — 3 ferramentas instaladas e validadas: Puppeteer (projeto isolado, HTML sintético, screenshot sem sandbox disable), FFmpeg/ffprobe (winget Gyan 9.0.2, clipe sintético 2s validado com ffprobe), HyperFrames v0.9.36 (init + composição HTML/GSAP 3s + render MP4 validado com ffprobe).
+- Próxima atualização: Lote 4 — inventário de serviços externos, requisitos de conta, autenticação, possível custo e teste futuro.

@@ -224,3 +224,48 @@
 **Próximo passo:** Identificar causa dos alertas "Socket" e "Critical Risk"; Lote 3 — Puppeteer, FFmpeg (se necessário), HyperFrames.
 
 **Referência:** Commits pendentes — aguarda revisão e push.
+
+---
+
+## 2026-11-11 — Lote 3: Instalação e Validação de Ferramentas (Esta Sessão)
+
+**Objetivo:** Instalar e testar 3 ferramentas: Puppeteer (browser automation), FFmpeg/ffprobe (encoding/probing vídeo), HyperFrames (HTML/GSAP → MP4).
+
+**Mudança realizada:**
+- `npm install puppeteer` em projeto isolado `/tmp/puppeteer-test`
+- `winget install --id Gyan.FFmpeg` → FFmpeg 9.0.2 full build (Gyan)
+- `npx hyperframes init hyperframes-test` → projeto HyperFrames v0.9.36 criado
+- Composição HTML/GSAP 3s criada em `index.html` (título, subtítulo, barra animada)
+- `npx hyperframes render -o hyperframes-3s.mp4` → render MP4
+
+**Testes executados:**
+| Item | Versão/Revisão | Método/Escopo | Teste | Resultado | Pendência |
+|------|----------------|---------------|-------|-----------|-----------|
+| Puppeteer | 23.x (npm) | npm install | Projeto isolado; HTML sintético com título "Puppeteer Synthetic Test"; screenshot fullPage | `screenshot.png` gerado; execução sem `--no-sandbox` | — |
+| FFmpeg/ffprobe | 9.0.2 (Gyan) | winget | Clipe sintético 2s (testsrc 640×480@30 + sine 440Hz) → `synthetic-2s.mp4` | ffprobe: vídeo 2,0s 640×480@30; áudio 2,0s 44.1kHz mono | — |
+| HyperFrames | 0.9.36 (npm) | npx hyperframes | Init + composição HTML/GSAP 3s (fade/slide/width) → render | `hyperframes-3s.mp4` 1920×1080@30, 3,0s; ffprobe validado | — |
+
+**Integrações envolvidas:**
+- `npm` — instalação de Puppeteer e HyperFrames
+- `winget` — instalação de FFmpeg (Gyan build)
+- FFmpeg/ffprobe — encoding e probing de vídeo
+- Chrome headless (via HyperFrames) — captura de frames
+
+**Decisão e justificativa:**
+- Puppeteer: projeto isolado para evitar contaminação; execução sem desativar sandbox
+- FFmpeg: winget Gyan full build para codecs completos; validação via ffprobe obrigatória
+- HyperFrames: composição própria (não testsrc do FFmpeg) para validar a ferramenta real; GSAP para animação de texto e movimento
+- Todas as validações com ffprobe para evidência objetiva
+
+**Resultado:** 3 ferramentas instaladas e validadas; `docs/capability-inventory.md` atualizado com entradas de Puppeteer, FFmpeg/ffprobe, HyperFrames (total de integrações: 7).
+
+**Limitações:**
+- Puppeteer: requer Chromium; execução headless
+- FFmpeg: PATH precisa ser atualizado no shell após winget; build Gyan 9.0.2 full
+- HyperFrames: requer FFmpeg no PATH; Chrome headless; GPU auto-detect; render local
+- Impeccable e design-taste-frontend: testes ainda suspensos por alertas de instalação
+- Caveman-compress: apenas concisão de saída autorizada; compressão de arquivo suspensa
+
+**Próximo passo:** Lote 4 — inventário de serviços externos, requisitos de conta, autenticação, possível custo e teste futuro.
+
+**Referência:** Commits pendentes — aguarda revisão e push.
