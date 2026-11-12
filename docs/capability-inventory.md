@@ -161,8 +161,6 @@ Tabela viva e rastreável. Atualizar quando o estado de uma capacidade mudar. Ev
 | find-animation-opportunities | Detectar oportunidades de motion | instalada; teste não executado / pendente de sessão nova | — | — | 2026-11-12 | Read-only; propõe, não implementa; complementa emil-design-eng | Sim |
 | animate | Build animação do zero | instalada; teste não executado / pendente de sessão nova | — | — | 2026-11-12 | Para critique usar review-animations; complementa emil-design-eng | Sim |
 
-**Total de entradas de skills:** — não conferida. **Não equivale a capacidades operacionais.** Diretório encontrado ≠ definição inspecionada ≠ execução ≠ validação. Execução das skills não comprovada pelas fontes consultadas.
-
 ---
 
 ## Integrações
