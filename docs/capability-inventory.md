@@ -152,7 +152,7 @@ Tabela viva e rastreável. Atualizar quando o estado de uma capacidade mudar. Ev
 | design-taste-frontend | Anti-slop frontend (tasteskill 2.5.0) | instalada; teste suspenso por alerta | — | Critical Risk relatado no instalador; causa não identificada | 2026-11-06 | Teste suspenso até esclarecer alerta | Sim |
 | hyperframes | HTML→vídeo (GSAP + FFmpeg) | instalada; executada; validada | `hyperframes init` + composição HTML 3s + `hyperframes render` | `hyperframes-3s.mp4` 1920×1080@30, 3,0s; ffprobe validado | 2026-11-11 | Requer FFmpeg no PATH; render local usa Chrome headless | Sim |
 
-**Total de entradas de skills:** 95 (86 originais + 4 Lote 1 + 4 Lote 2 + 1 Lote 3). **Não equivale a 95 capacidades operacionais.** Diretório encontrado ≠ definição inspecionada ≠ execução ≠ validação. Execução das skills não comprovada pelas fontes consultadas.
+**Total de entradas de skills:** 95 (86 originais + 4 Lote 1 + 4 Lote 2 + 1 Lote 3) — **não conferida**. **Não equivale a 95 capacidades operacionais.** Diretório encontrado ≠ definição inspecionada ≠ execução ≠ validação. Execução das skills não comprovada pelas fontes consultadas.
 
 ---
 

@@ -94,11 +94,11 @@ Instalar, configurar e validar um conjunto de skills (Claude Code) e ferramentas
 
 | Serviço | Tipo | Finalidade | Autenticação | Custo | Documentação | Status | Teste Futuro Mínimo | Ação Humana Necessária |
 |---------|------|------------|--------------|-------|--------------|--------|---------------------|------------------------|
-| Metricool | SaaS API | Social media analytics & scheduling | API Key | Plano pago p/ endpoints completos; free tier limitado | app.metricool.com/resources/apidocs, help.metricool.com | planejado | GET /me (valida auth) | Criar conta; gerar API key |
-| Higgsfield | SaaS API | AI video generation (image→video, text→video) | Bearer Token | Pay-per-generation | docs.higgsfield.ai, open.higgsfield.ai/pricing | planejado | POST /generate (5s, parâmetros mínimos) | Criar conta; org verificada se exigida |
-| Apify | SaaS Platform | Web scraping & automation (Actors) | API Token | Pay-per-actor-run; free tier limitado | docs.apify.com/api/v2, help.apify.com | planejado | GET /acts (lista Actors) | Criar conta; gerar API token |
-| GPT Image (OpenAI) | SaaS API | Image generation/editing (gpt-image-1) | API Key (OpenAI) | Custo por imagem (resolução/qualidade) | developers.openai.com/api/docs/models/gpt-image-1, pricing | planejado | POST /images/generations (1 imagem, prompt mínimo) | Conta OpenAI; org verificada |
-| Nano Banana | SaaS API | AI image generation (Gemini) | API Key (Google AI) | Custo por geração | ai.google.dev/gemini-api/docs | planejado | POST /models/generateContent (1 imagem, prompt mínimo) | Conta Google AI; habilitar Gemini API |
+| Metricool | SaaS API | Social media analytics & scheduling | API Key | Plano pago p/ endpoints completos; free tier limitado | app.metricool.com/resources/apidocs, help.metricool.com | planejado | GET /me (valida auth) — a verificar na documentação oficial | Criar conta; gerar API key |
+| Higgsfield | SaaS API | AI video generation (image→video, text→video) | Bearer Token | Pay-per-generation | docs.higgsfield.ai, open.higgsfield.ai/pricing | planejado | POST /generate (5s, parâmetros mínimos) — a verificar na documentação oficial | Criar conta; org verificada se exigida |
+| Apify | SaaS Platform | Web scraping & automation (Actors) | API Token | Pay-per-actor-run; free tier limitado | docs.apify.com/api/v2, help.apify.com | planejado | GET /acts (lista Actors) — a verificar na documentação oficial | Criar conta; gerar API token |
+| GPT Image (OpenAI) | SaaS API | Image generation/editing (gpt-image-1) | API Key (OpenAI) | Custo por imagem (resolução/qualidade) | developers.openai.com/api/docs/models/gpt-image-1, pricing | planejado | POST /images/generations (1 imagem, prompt mínimo) — a verificar na documentação oficial | Conta OpenAI; org verificada |
+| Nano Banana | SaaS API | AI image generation (Gemini) | API Key (Google AI) | Custo por geração | ai.google.dev/gemini-api/docs | planejado | POST /models/generateContent (1 imagem, prompt mínimo) — a verificar na documentação oficial | Conta Google AI; habilitar Gemini API |
 
 **Nenhuma conta criada, nenhuma chamada paga executada.** Apenas inventário documental com referências oficiais.
 
@@ -144,7 +144,7 @@ Instalar, configurar e validar um conjunto de skills (Claude Code) e ferramentas
 
 ## Próximos Passos (Lote 5+)
 
-1. Para serviços do Lote 4: executar testes futuros específicos definidos na tabela do Lote 4 (ex.: Metricool GET /me, Higgsfield POST /generate 5s, Apify GET /acts, GPT Image POST /images/generations, Nano Banana POST /models/generateContent).
+1. Para serviços do Lote 4: executar testes futuros específicos definidos na tabela do Lote 4 (ex.: Metricool GET /me, Higgsfield POST /generate 5s, Apify GET /acts, GPT Image POST /images/generations, Nano Banana POST /models/generateContent — todos a verificar na documentação oficial).
 2. Avaliar necessidade de MCP servers para serviços recorrentes.
 3. Configurar variáveis de ambiente seguras para API keys (não commitar).
 4. **Não** conectar contas, criar contas ou fazer chamadas pagas sem aprovação explícita.

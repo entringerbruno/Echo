@@ -292,11 +292,11 @@
 
 | Serviço | Tipo | Autenticação | Custo | Docs | Status | Teste Futuro Mínimo | Ação Humana Necessária |
 |---------|------|--------------|-------|------|--------|---------------------|------------------------|
-| Metricool | SaaS API | API Key | Plano pago; free tier limitado | app.metricool.com/resources/apidocs | planejado | GET /me (valida auth) | Criar conta; gerar API key |
-| Higgsfield | SaaS API | Bearer Token | Pay-per-generation | docs.higgsfield.ai | planejado | POST /generate (5s, parâmetros mínimos) | Criar conta; org verificada se exigida |
-| Apify | SaaS Platform | API Token | Pay-per-actor-run | docs.apify.com/api/v2 | planejado | GET /acts (lista Actors) | Criar conta; gerar API token |
-| GPT Image | SaaS API | API Key (OpenAI) | Custo por imagem | developers.openai.com/api/docs/models/gpt-image-1 | planejado | POST /images/generations (1 imagem, prompt mínimo) | Conta OpenAI; org verificada |
-| Nano Banana | SaaS API | API Key (Google AI) | Custo por geração | ai.google.dev/gemini-api/docs | planejado | POST /models/generateContent (1 imagem, prompt mínimo) | Conta Google AI; habilitar Gemini API |
+| Metricool | SaaS API | API Key | Plano pago; free tier limitado | app.metricool.com/resources/apidocs | planejado | GET /me (valida auth) — a verificar na documentação oficial | Criar conta; gerar API key |
+| Higgsfield | SaaS API | Bearer Token | Pay-per-generation | docs.higgsfield.ai | planejado | POST /generate (5s, parâmetros mínimos) — a verificar na documentação oficial | Criar conta; org verificada se exigida |
+| Apify | SaaS Platform | API Token | Pay-per-actor-run | docs.apify.com/api/v2 | planejado | GET /acts (lista Actors) — a verificar na documentação oficial | Criar conta; gerar API token |
+| GPT Image | SaaS API | API Key (OpenAI) | Custo por imagem | developers.openai.com/api/docs/models/gpt-image-1 | planejado | POST /images/generations (1 imagem, prompt mínimo) — a verificar na documentação oficial | Conta OpenAI; org verificada |
+| Nano Banana | SaaS API | API Key (Google AI) | Custo por geração | ai.google.dev/gemini-api/docs | planejado | POST /models/generateContent (1 imagem, prompt mínimo) — a verificar na documentação oficial | Conta Google AI; habilitar Gemini API |
 
 **Integrações envolvidas:**
 - Web (pesquisa de documentação oficial)
